@@ -1,11 +1,15 @@
 using DotnetBootcampProje.Core.Repositories;
+using DotnetBootcampProje.Core.Services;
 using DotnetBootcampProje.Core.UnitOfWork;
 using DotnetBootcampProje.Repository;
 using DotnetBootcampProje.Repository.Repositories;
 using DotnetBootcampProje.Repository.UnitOfWork;
+using DotnetBootcampProje.Service;
+using DotnetBootcampProje.Service.Mapping;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Reflection;
+using DotnetBootcampProje.Service.Validations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +28,19 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+builder.Services.AddAutoMapper(typeof(MapProfile));
+
+#pragma warning disable CS0618 // Type or member is obsolete
+builder.Services.AddControllers()
+    .AddFluentValidation(x =>
+    {
+        x.RegisterValidatorsFromAssemblyContaining<ClassDtoValidator>();
+        x.RegisterValidatorsFromAssemblyContaining<TeacherDtoValidator>();
+        x.RegisterValidatorsFromAssemblyContaining<StudentDtoValidator>();
+    });
+#pragma warning restore CS0618 // Type or member is obsolete
 
 var app = builder.Build();
 
