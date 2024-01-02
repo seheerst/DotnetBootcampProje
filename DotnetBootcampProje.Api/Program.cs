@@ -10,6 +10,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using DotnetBootcampProje.Service.Validations;
+using DotnetBootcampProje.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,9 @@ builder.Services.AddControllers()
         x.RegisterValidatorsFromAssemblyContaining<StudentDtoValidator>();
     });
 #pragma warning restore CS0618 // Type or member is obsolete
+
+builder.Services.AddScoped<IClassService, ClassService>();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
 
 var app = builder.Build();
 
