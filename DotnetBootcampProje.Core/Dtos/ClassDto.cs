@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DotnetBootcampProje.Core.Dtos
 {
-    public class ClassDto
+    public class ClassDto:BaseDto
     {
         public string Name { get; set; }
     }
