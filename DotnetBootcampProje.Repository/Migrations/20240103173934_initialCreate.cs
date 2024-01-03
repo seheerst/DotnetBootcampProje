@@ -71,47 +71,47 @@ namespace DotnetBootcampProje.Repository.Migrations
             migrationBuilder.InsertData(
                 table: "Classes",
                 columns: new[] { "Id", "CreatedDate", "Name" },
-                values: new object[] { 1, new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8420), "1.Sınıf" });
+                values: new object[] { 1, new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(2990), "1.Sınıf" });
 
             migrationBuilder.InsertData(
                 table: "Classes",
                 columns: new[] { "Id", "CreatedDate", "Name" },
-                values: new object[] { 2, new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8439), "2.Sınıf" });
+                values: new object[] { 2, new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3011), "2.Sınıf" });
 
             migrationBuilder.InsertData(
                 table: "Classes",
                 columns: new[] { "Id", "CreatedDate", "Name" },
-                values: new object[] { 3, new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8441), "3.Sınıf" });
+                values: new object[] { 3, new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3013), "3.Sınıf" });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "ClassId", "CreatedDate", "Email", "Name", "Phone" },
-                values: new object[] { 1, 1, new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(9140), "ali@test.com", "Ali Yılmaz", "5555555" });
+                values: new object[] { 1, 1, new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3600), "ali@test.com", "Ali Yılmaz", "5555555" });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "ClassId", "CreatedDate", "Email", "Name", "Phone" },
-                values: new object[] { 2, 2, new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(9146), "gizem@test.com", "Gizem Tosun", "5555555" });
+                values: new object[] { 2, 2, new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3603), "gizem@test.com", "Gizem Tosun", "5555555" });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "ClassId", "CreatedDate", "Email", "Name", "Phone" },
-                values: new object[] { 3, 3, new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(9149), "ayse@test.com", "Ayşe kaya", "5555555" });
+                values: new object[] { 3, 3, new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3605), "ayse@test.com", "Ayşe kaya", "5555555" });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "CreatedDate", "Name", "Number", "TeacherId" },
-                values: new object[] { 1, new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8882), "Seher Selin", "290", 1 });
+                values: new object[] { 1, new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3372), "Seher Selin", "290", 1 });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "CreatedDate", "Name", "Number", "TeacherId" },
-                values: new object[] { 2, new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8888), "Şevval Özdemir", "100", 1 });
+                values: new object[] { 2, new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3376), "Şevval Özdemir", "100", 1 });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "CreatedDate", "Name", "Number", "TeacherId" },
-                values: new object[] { 3, new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8890), "Ceren Soysal", "100", 2 });
+                values: new object[] { 3, new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3378), "Ceren Soysal", "100", 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_TeacherId",

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DotnetBootcampProje.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231230170501_initialCreate")]
+    [Migration("20240103173934_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,19 +48,19 @@ namespace DotnetBootcampProje.Repository.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8420),
+                            CreatedDate = new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(2990),
                             Name = "1.Sınıf"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8439),
+                            CreatedDate = new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3011),
                             Name = "2.Sınıf"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8441),
+                            CreatedDate = new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3013),
                             Name = "3.Sınıf"
                         });
                 });
@@ -99,7 +99,7 @@ namespace DotnetBootcampProje.Repository.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8882),
+                            CreatedDate = new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3372),
                             Name = "Seher Selin",
                             Number = "290",
                             TeacherId = 1
@@ -107,7 +107,7 @@ namespace DotnetBootcampProje.Repository.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8888),
+                            CreatedDate = new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3376),
                             Name = "Şevval Özdemir",
                             Number = "100",
                             TeacherId = 1
@@ -115,7 +115,7 @@ namespace DotnetBootcampProje.Repository.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(8890),
+                            CreatedDate = new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3378),
                             Name = "Ceren Soysal",
                             Number = "100",
                             TeacherId = 2
@@ -162,7 +162,7 @@ namespace DotnetBootcampProje.Repository.Migrations
                         {
                             Id = 1,
                             ClassId = 1,
-                            CreatedDate = new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(9140),
+                            CreatedDate = new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3600),
                             Email = "ali@test.com",
                             Name = "Ali Yılmaz",
                             Phone = "5555555"
@@ -171,7 +171,7 @@ namespace DotnetBootcampProje.Repository.Migrations
                         {
                             Id = 2,
                             ClassId = 2,
-                            CreatedDate = new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(9146),
+                            CreatedDate = new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3603),
                             Email = "gizem@test.com",
                             Name = "Gizem Tosun",
                             Phone = "5555555"
@@ -180,7 +180,7 @@ namespace DotnetBootcampProje.Repository.Migrations
                         {
                             Id = 3,
                             ClassId = 3,
-                            CreatedDate = new DateTime(2023, 12, 30, 20, 5, 0, 927, DateTimeKind.Local).AddTicks(9149),
+                            CreatedDate = new DateTime(2024, 1, 3, 20, 39, 34, 417, DateTimeKind.Local).AddTicks(3605),
                             Email = "ayse@test.com",
                             Name = "Ayşe kaya",
                             Phone = "5555555"
@@ -201,17 +201,12 @@ namespace DotnetBootcampProje.Repository.Migrations
             modelBuilder.Entity("DotnetBootcampProje.Core.Models.Teacher", b =>
                 {
                     b.HasOne("DotnetBootcampProje.Core.Models.Class", "Class")
-                        .WithMany("Teachers")
+                        .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Class");
-                });
-
-            modelBuilder.Entity("DotnetBootcampProje.Core.Models.Class", b =>
-                {
-                    b.Navigation("Teachers");
                 });
 
             modelBuilder.Entity("DotnetBootcampProje.Core.Models.Teacher", b =>
