@@ -10,5 +10,6 @@ namespace DotnetBootcampProje.Core.Dtos
     {
         public string Name { get; set; }
         public string Number { get; set; }
+        public int TeacherId { get; set; }
     }
 }
