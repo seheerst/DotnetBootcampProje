@@ -13,6 +13,7 @@ namespace DotnetBootcampProje.Core.Models
         public string Phone { get; set; }
         public int ClassId { get; set; }
         public Class Class { get; set; }
+        public string Password { get; set; }
         public ICollection<Student> Students { get; set; }
 
     }
