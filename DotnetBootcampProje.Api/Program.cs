@@ -1,4 +1,4 @@
-using DotnetBootcampProje.Core.Repositories;
+﻿using DotnetBootcampProje.Core.Repositories;
 using DotnetBootcampProje.Core.Services;
 using DotnetBootcampProje.Core.UnitOfWork;
 using DotnetBootcampProje.Repository;
@@ -11,13 +11,46 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using DotnetBootcampProje.Service.Validations;
 using DotnetBootcampProje.Service.Services;
+using Microsoft.OpenApi.Models;
+using Autofac;
+using DotnetBootcampProje.Api.Modules;
+using Autofac.Extensions.DependencyInjection;
+using DotnetBootcampProje.Service.Authorization.Abstraction;
+using DotnetBootcampProje.Service.Authorization.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Description = "Bearer Authentication with JWT Token",
+        Type = SecuritySchemeType.Http
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Id = "Bearer",
+                    Type = ReferenceType.SecurityScheme
+                }
+            },
+            new List<string>()
+        }
+    });
+});
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
@@ -27,10 +60,13 @@ builder.Services.AddDbContext<AppDbContext>(x =>
     });
 });
 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
-builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoModuleService()));
+
+builder.Services.AddScoped<IJwtAuthenticationManager, JwtAuthenticationManager>();
+
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
 #pragma warning disable CS0618 // Type or member is obsolete

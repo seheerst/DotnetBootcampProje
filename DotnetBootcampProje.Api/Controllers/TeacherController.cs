@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DotnetBootcampProje.Core.Dtos;
+using DotnetBootcampProje.Core.Dtos.Authentication;
 using DotnetBootcampProje.Core.Models;
 using DotnetBootcampProje.Core.Services;
 using Microsoft.AspNetCore.Http;
