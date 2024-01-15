@@ -14,9 +14,9 @@ namespace DotnetBootcampProje.Repository.Seeds
         public void Configure(EntityTypeBuilder<Teacher> builder)
         {
             builder.HasData(
-                new Teacher { Id = 1, Name = "Ali Yılmaz", CreatedDate = DateTime.Now, Phone= "5555555", Email = "ali@test.com", ClassId = 1},
-                new Teacher { Id = 2, Name = "Gizem Tosun", CreatedDate = DateTime.Now, Phone= "5555555", Email = "gizem@test.com", ClassId = 2},
-                new Teacher { Id = 3, Name = "Ayşe kaya", CreatedDate = DateTime.Now, Phone= "5555555", Email = "ayse@test.com", ClassId= 3}
+                new Teacher { Id = 1, Name = "Ali Yılmaz", CreatedDate = DateTime.Now, Phone= "5555555", Email = "ali@test.com", ClassId = 1, Password= "12345"},
+                new Teacher { Id = 2, Name = "Gizem Tosun", CreatedDate = DateTime.Now, Phone= "5555555", Email = "gizem@test.com", ClassId = 2, Password = "12345" },
+                new Teacher { Id = 3, Name = "Ayşe kaya", CreatedDate = DateTime.Now, Phone= "5555555", Email = "ayse@test.com", ClassId= 3, Password = "12345" }
 
                 );
         }
