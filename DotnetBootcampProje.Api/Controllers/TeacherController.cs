@@ -37,13 +37,6 @@ namespace DotnetBootcampProje.Api.Controllers
             return CreateActionResult(CustomResponseDto<TeacherDto>.Success(200, entityDto));
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Save(TeacherDto teacherDto)
-        {
-            var entity = await _teacherService.AddAsync(_mapper.Map<Teacher>(teacherDto));
-            var entityDto = _mapper.Map<TeacherDto>(entity);
-            return CreateActionResult(CustomResponseDto<TeacherDto>.Success(201, entityDto));
-        }
 
         [HttpPut]
         public async Task<IActionResult> Update(TeacherDto teacherDto)
@@ -59,6 +52,24 @@ namespace DotnetBootcampProje.Api.Controllers
             await _teacherService.RemoveAsync(entity);
 
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+        }
+
+        [HttpPost("Signup")]
+        public async Task<IActionResult> SignUp(AuthRequestDto authDto)
+        {
+            var teacher = _teacherService.SignUp(authDto);
+            var teacherDto = _mapper.Map<TeacherDto>(teacher);
+            return CreateActionResult(CustomResponseDto<TeacherDto>.Success(201, teacherDto));
+        }
+
+        [HttpPost("Login")]
+        public IActionResult Login(AuthRequestDto authDto)
+        {
+            var result = _teacherService.Login(authDto);
+            if (result.Teacher != null)
+                return CreateActionResult(CustomResponseDto<AuthResponseDto>.Success(200, result));
+            else
+                return CreateActionResult(CustomResponseDto<AuthResponseDto>.Success(401, result));
         }
 
     }
